@@ -1,7 +1,7 @@
 import socket
 
 # IP do servidor (altere para o IP local do computador onde o servidor está rodando)
-IP_SERVIDOR = '192.168.1.10'  # <-- coloque o IP real do servidor aqui
+IP_SERVIDOR = '192.168.0.103'  # <-- coloque o IP real do servidor aqui
 PORTA = 5000
 
 # Cria o socket
