@@ -4,4 +4,4 @@ global:
 scrape_configs:
   - job_name: 'k8s-metrics-socket'
     static_configs:
-      - targets: ['localhost:8000']
+      - targets: ['host.docker.internal:8000']  # ou 'localhost:8000' fora do Docker
