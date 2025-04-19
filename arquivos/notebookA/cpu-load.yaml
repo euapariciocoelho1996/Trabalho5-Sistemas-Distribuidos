@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cpu-loader
+spec:
+  containers:
+  - name: cpu-loader
+    image: busybox
+    command: [ "sh", "-c", "while true; do echo 'Load CPU'; done" ]
+    resources:
+      requests:
+        cpu: "100m"
+      limits:
+        cpu: "1000m"
+    # O pod ficará gerando carga até ser removido

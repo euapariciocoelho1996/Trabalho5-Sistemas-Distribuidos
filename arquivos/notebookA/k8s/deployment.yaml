@@ -17,3 +17,8 @@ spec:
         image: fapa1996/app-k8s:1.0
         ports:
         - containerPort: 5000
+        resources:
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 200m
