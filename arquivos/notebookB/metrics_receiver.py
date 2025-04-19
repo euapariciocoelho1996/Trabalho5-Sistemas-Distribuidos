@@ -28,26 +28,24 @@ def start_socket_server():
             conn, addr = s.accept()
             with conn:
                 print(f"[INFO] Conexão recebida de {addr}")
-                data = conn.recv(4096)
-                if not data:
-                    continue
-                try:
-                    metrics_data = json.loads(data.decode('utf-8'))
+                while True:
+                    data = conn.recv(4096)
+                    if not data:
+                        break  # Se não houver dados, sai do loop
+                    try:
+                        metrics_data = json.loads(data.decode('utf-8'))
 
-                    # Debug opcional:
-                    # print("[DEBUG] JSON recebido:", metrics_data)
+                        # Atualiza as métricas conforme os dados recebidos
+                        total_pods.set(metrics_data.get("total_pods", 0))
+                        cpu_utilization.set(metrics_data.get("cpu_utilization", 0))
+                        desired_replicas.set(metrics_data.get("hpa_desired_replicas", 0))
 
-                    total_pods.set(metrics_data.get("total_pods", 0))
-                    cpu_utilization.set(metrics_data.get("cpu_utilization", 0))
-                    desired_replicas.set(metrics_data.get("hpa_replicas", 0))
+                        pod_running.set(metrics_data.get("running", 0))
+                        pod_failed.set(metrics_data.get("failed", 0))
+                        pod_pending.set(metrics_data.get("pending", 0))
 
-                    status = metrics_data.get("status", {})
-                    pod_running.set(status.get("Running", 0))
-                    pod_failed.set(status.get("Failed", 0))
-                    pod_pending.set(status.get("Pending", 0))
-
-                except json.JSONDecodeError:
-                    print("[ERRO] JSON inválido recebido.")
+                    except json.JSONDecodeError:
+                        print("[ERRO] JSON inválido recebido.")
 
 # Rota Prometheus para scrape
 @app.route("/metrics")
