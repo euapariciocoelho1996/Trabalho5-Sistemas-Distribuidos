@@ -89,5 +89,14 @@ HTML = """
 def home():
     return render_template_string(HTML)
 
+@app.route('/cpu-stress')
+def stress():
+    import time
+    start = time.time()
+    while time.time() - start < 30:
+        sum(i*i for i in range(10000))
+    return "CPU stress done"
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
