@@ -19,7 +19,7 @@ Este projeto implementa um sistema distribuído entre dois notebooks interligado
 │   ├── k8s_metrics_sender.py      # Script que coleta e envia métricas via socket
 │   └── requirements.txt
 │
-├── 📁 notebookB                     # Recebe métricas e expõe via Prometheus
+├── 📁 notebookB                     # Recebe métricas e expõe via Prometheus e Grafana
 │   ├── 📁 prometheus                
 │   │   └── prometheus.yml
 │   │
