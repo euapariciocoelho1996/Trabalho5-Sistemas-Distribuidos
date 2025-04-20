@@ -59,19 +59,23 @@ Executar k8s_metrics_sender.py
 ```
 
 ### 2️⃣ Notebook B 
+
 ```
 Iniciar Docker
 cd arquivos
 cd notebookB
 pip install -r requirements.txt
 docker-compose up -d
-Executar metrics_receiver.py ```
+Executar metrics_receiver.py
+
+```
 
 O Prometheus estará disponível na porta 9090, e o Grafana na 3000.
 
 ### ⚙️ Funcionamento Interno
 
-``` O Notebook A coleta métricas do cluster Kubernetes com kubectl e envia para o Notebook B usando socket.
+```
+O Notebook A coleta métricas do cluster Kubernetes com kubectl e envia para o Notebook B usando socket.
 
 O Notebook B recebe as métricas e as expõe na rota /metrics, que o Prometheus consome.
 
@@ -85,7 +89,8 @@ Estado dos pods (Running, Pending, Failed)
 
 Ações disparadas pelo HPA
 
-Número total de pods ativos ```
+Número total de pods ativos
+```
 
 
 
