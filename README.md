@@ -50,12 +50,16 @@ Este projeto implementa um sistema distribuído entre dois notebooks interligado
 ```
 Iniciar Docker
 Iniciar minikube (minikube start) pelo PowerShell Adm.
+Verificar se o minikube foi iniciado corretamente com: minikube start (deve aparecer running)
 cd arquivos
 cd notebookA
 kubectl apply -f k8s/
 cd app
 pip install -r requirements.txt
+Verificar pods ativos com: kubectl get pods (deve iniciar com 2)
 Executar k8s_metrics_sender.py
+
+CASO QUEIRA VER USO DA CPU: kubectl get hpa -w
 ```
 
 ### 2️⃣ Notebook B 
@@ -69,9 +73,51 @@ docker-compose up -d
 Executar metrics_receiver.py
 
 ```
+### O Prometheus estará disponível na porta 9090, e o Grafana na 3000, para ver o funcionamento:
 
-O Prometheus estará disponível na porta 9090, e o Grafana na 3000.
+```
+Prometheus: http://localhost:9090
+Grafana: http://localhost:3000
 
+Ajustes no Grafana:
+
+Usuário: admin
+Senha: admin
+
+Adicionar Gráficos. No Grafana:
+
+- Open menu
+- Connections
+- Data sources
+- Add New Data Source
+- Seleciona Prometheus
+- Default desativado
+- Coloca http://localhost:9090 no prometheus server url
+- Salva
+- Dashboards
+- New
+- New Dashboards
+- Add visualização
+- Prometheus criado
+
+```
+### APLICANDO SOBRECARGA ARTIFICIAL EM UM POD 
+
+```
+kubectl get pods (ver pods ativos)
+
+kubectl get hpa -w (uso da cpu)
+
+kubectl exec -it <nome do pod> -- /bin/sh
+Acessa o terminal interativo (sh) dentro do pod especificado.
+
+apt-get update && apt-get install -y stress
+Atualiza a lista de pacotes e instala a ferramenta stress, usada para simular carga de CPU.
+
+stress --cpu 1 --timeout 60
+Gera uma carga de CPU utilizando 1 núcleo por 60 segundos, útil para testar o escalonamento automático (HPA).
+
+```
 ### ⚙️ Funcionamento Interno
 
 ```
