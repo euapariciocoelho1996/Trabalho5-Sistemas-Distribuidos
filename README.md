@@ -4,7 +4,7 @@ Este projeto implementa um sistema distribuído entre dois notebooks interligado
 ```
 📁 TRABALHO5-SISTEMAS-DISTRIBUIDOS
 │
-├── 📁 notebookA                     # Coleta métricas do Kubernetes com socket
+├── 📁 notebookA                     
 │   ├── 📁 app                      # Aplicativo Flask
 │   │   ├── main.py                
 │   │   └── requirements.txt       
