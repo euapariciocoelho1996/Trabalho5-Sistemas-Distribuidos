@@ -97,7 +97,7 @@ def main():
 
             message = json.dumps(metrics)
             sock.sendall(message.encode('utf-8'))
-            print("[DEBUG] Métricas enviadas com sucesso!")
+            # print("[DEBUG] Métricas enviadas com sucesso!")
 
         except Exception as e:
             print(f"[ERRO] Falha ao enviar métricas: {e}")
