@@ -1,4 +1,4 @@
-# 🧐 SISTEMAS DISTRIBUÍDOS - TOLERÂNCIA A FALHAS, AUTO-RECUPERAÇÃO, ESCALONAMENTO HORIZONTAL E MONITORAMENTO REMOTO
+# SISTEMAS DISTRIBUÍDOS - TOLERÂNCIA A FALHAS, AUTO-RECUPERAÇÃO, ESCALONAMENTO HORIZONTAL E MONITORAMENTO REMOTO
 
 Este projeto implementa um sistema distribuído entre dois notebooks interligados, com foco em monitoramento remoto de um cluster Kubernetes. Utilizamos Prometheus, Grafana, Flask, Sockets e Docker para coleta, envio e visualização de métricas do cluster, incluindo dados em tempo real do HPA e do estado dos pods.
 ```
