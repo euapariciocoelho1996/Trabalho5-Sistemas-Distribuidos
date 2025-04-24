@@ -50,7 +50,7 @@ Este projeto implementa um sistema distribuído entre dois notebooks interligado
 ```
 Iniciar Docker
 Iniciar minikube (minikube start) pelo PowerShell Adm.
-Verificar se o minikube foi iniciado corretamente com: minikube start (deve aparecer running)
+Verificar se o minikube foi iniciado corretamente com: minikube status (deve aparecer running)
 cd arquivos
 cd notebookA
 kubectl apply -f k8s/
