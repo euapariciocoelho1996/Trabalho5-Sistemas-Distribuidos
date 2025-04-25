@@ -59,6 +59,10 @@ pip install -r requirements.txt
 Verificar pods ativos com: kubectl get pods (deve iniciar com 2)
 Executar k8s_metrics_sender.py
 
+Verificar status dos pods
+kubectl get pods -w (verificar pods em tempo real
+kubectl delete pod <nome_do_pod>
+
 CASO QUEIRA VER USO DA CPU: kubectl get hpa -w
 ```
 
