@@ -63,6 +63,9 @@ Verificar status dos pods
 kubectl get pods -w (verificar pods em tempo real
 kubectl delete pod <nome_do_pod>
 
+Serviços
+kubectl get services
+
 CASO QUEIRA VER USO DA CPU: kubectl get hpa -w
 ```
 
